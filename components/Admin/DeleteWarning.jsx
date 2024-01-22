@@ -40,7 +40,7 @@ export default function DeleteWarning({
                   Otherwise, you will lose your data.
                 </p>
                 <p className="font-bold text-center text-primary-200 text-lg">
-                  You're deleting {examYear} A/L data!
+                  You&apos;re deleting {examYear} A/L data!
                 </p>
               </ModalBody>
               <ModalFooter>
