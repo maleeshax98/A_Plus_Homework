@@ -22,7 +22,7 @@ export default function Login() {
 
       if (callback?.ok && !callback?.error) {
         toast.success("Logged in successfully!");
-        // router.push("/admin/dashboard");
+        router.push("/admin/dashboard");
       }
     });
   };
