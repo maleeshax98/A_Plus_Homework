@@ -184,7 +184,26 @@ export async function getWebStatus() {
 }
 
 export async function addNewYear(year) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json(
+      { error: "Unauthenticated Request" },
+      { status: 403 }
+    );
+  }
+
   try {
+    const alreadyHave = await prisma.ExamYear.findFirst({
+      where: {
+        examyear: year,
+      },
+    });
+
+    if (alreadyHave) {
+      return { success: "The year has already been added." };
+    }
+
     const examYear = await prisma.ExamYear.create({
       data: {
         examyear: year,
@@ -199,5 +218,41 @@ export async function addNewYear(year) {
   } catch (err) {
     console.log(err);
     return { error: "Something went wrong" };
+  }
+}
+
+export async function deleteExamYear(id) {
+  const session = await getServerSession(authOptions);
+
+  if (!session) {
+    return NextResponse.json(
+      { error: "Unauthenticated Request" },
+      { status: 403 }
+    );
+  }
+
+  try {
+    const year = await prisma.ExamYear.delete({
+      where: {
+        id: id,
+      },
+    });
+
+    const deleteData = await prisma.Request.deleteMany({
+      where: {
+        examyear: {
+          id: id,
+        },
+      },
+    });
+
+    if (year) {
+      return { years: year, status: 200 };
+    } else {
+      return { error: "Something went wrong!" };
+    }
+  } catch (err) {
+    console.log(err);
+    return { error: "Something went wrong!" };
   }
 }

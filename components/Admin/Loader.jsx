@@ -3,7 +3,7 @@ import React, { useEffect, useState } from "react";
 import { CircularProgress } from "@nextui-org/react";
 
 export default function Loader({ data, count }) {
-  console.log(data);
+  
   const [percentage, setPercentage] = useState(0);
   useEffect(() => {
     var studentsWithVotes = data.count;

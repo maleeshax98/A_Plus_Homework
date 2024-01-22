@@ -22,12 +22,11 @@ export default function Login() {
 
       if (callback?.ok && !callback?.error) {
         toast.success("Logged in successfully!");
-        // router.push("/admin/dashboard");
+        router.push("/admin/dashboard");
       }
     });
   };
 
-  console.log(session);
   return (
     <>
       <div className="flex min-h-full flex-1 flex-col justify-center px-6 py-12 lg:px-8">
