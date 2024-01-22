@@ -8,6 +8,6 @@ export const config = { matcher: ["/admin/dashboard"] };
 export async function middleware(request) {
   const token = await getToken({ req: request });
   if (!token) {
-    return NextResponse.redirect("http://localhost:3000/");
+    return NextResponse.redirect("https://homeworkreport.vercel.app/");
   }
 }
