@@ -84,8 +84,6 @@ export default function Home() {
     run();
   }, []);
 
-  console.log(access);
-
   const [isPending, setIsPending] = useState(false);
   const [status, setStatus] = useState("pending");
 
@@ -106,12 +104,6 @@ export default function Home() {
 
     if (!main.trim()) {
       toast.error("Please enter main question number");
-      setAdding(false);
-      return;
-    }
-
-    if (!sub.trim()) {
-      toast.error("Please enter sub question number");
       setAdding(false);
       return;
     }
@@ -255,7 +247,7 @@ export default function Home() {
                   <div className="mt-[20px]  flex-1">
                     <Input
                       type="text"
-                      label="උප ප්‍රශ්න අංකය උදා:- iv"
+                      label="උප ප්‍රශ්න අංකය උදා:- iv / a) ii"
                       className="w-full"
                       value={subNumber}
                       onChange={(e) => setSubNumber(e.target.value)}
