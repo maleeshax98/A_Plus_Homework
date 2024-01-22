@@ -232,17 +232,17 @@ export async function deleteExamYear(id) {
   }
 
   try {
-    const year = await prisma.ExamYear.delete({
-      where: {
-        id: id,
-      },
-    });
-
     const deleteData = await prisma.Request.deleteMany({
       where: {
         examyear: {
           id: id,
         },
+      },
+    });
+
+    const year = await prisma.ExamYear.delete({
+      where: {
+        id: id,
       },
     });
 

@@ -16,9 +16,11 @@ export default function WebStatus() {
 
   useEffect(() => {
     const run = async () => {
-      setLoading(true);
-      const res = await changeWebStatus(selected);
-      setLoading(false);
+      if (selected !== null) {
+        setLoading(true);
+        const res = await changeWebStatus(selected);
+        setLoading(false);
+      }
     };
 
     run();
