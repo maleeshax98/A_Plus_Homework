@@ -112,9 +112,9 @@ export default function Home() {
     const newKey = length + 1;
     const data = {
       key: newKey,
-      main: main,
-      sub: sub,
-      hmName: hmName,
+      main: main.toLowerCase(),
+      sub: sub.toLowerCase(),
+      hmName: hmName.toLowerCase(),
     };
 
     setRows((prev) => [...prev, data]);
