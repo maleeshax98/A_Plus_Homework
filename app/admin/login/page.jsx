@@ -15,6 +15,10 @@ export default function Login() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    toast.loading("Checking...", {
+      duration: 1000,
+    });
+
     signIn("credentials", { ...data, redirect: false }).then((callback) => {
       if (callback?.error) {
         toast.error(callback.error);
@@ -87,7 +91,7 @@ export default function Login() {
             <div>
               <button
                 type="submit"
-                className="flex w-full justify-center rounded-md bg-primary-200 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
+                className="flex w-full hover:opacity-50 justify-center rounded-md bg-primary-200 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm  focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 "
               >
                 Login
               </button>
